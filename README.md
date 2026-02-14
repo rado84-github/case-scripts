@@ -3,6 +3,8 @@ Explanation how to fit an unlimited number of scripts into one, called "cases"
 
 I no longer use separate bash scripts - one file for each task, which is why I deleted the repository named "convenience bash scripts". I moved to the so called "cases" which I'm gonna explain here how to create and use them.
 
+"Why cases?" - Because case files means less separate files for each task. If until now you have had zero-compression.sh, max-compression.sh, max-compression-w-password.sh, now you need just one file. I used to have 260 .sh scripts. Now, thanks to the cases, I've reduced that numer to just 67 script files.
+
 First, create an empty file to which (for your own convenience) you can give the .sh extension. For the following example and explanations I'm going to use file names and code from my own case scripts. But you can name them whatever you want.
 
 Secondly, at the first and second lines of that empty file put this:
@@ -15,6 +17,8 @@ The pipefail code makes the script to stop execution, if it encounters any error
 For this explanation I'll start with probably the most used command ever - archiving files.
 
 Leave one line empty after pipefail (that's just for better readability) and write this:
+(please note that -mmt20 is the number of threads your CPU has; you can leave it as it is - if your CPU has less than 20 threads, it will still use all available threads. If it has more than 20 threads, I recommend you to change that number to match your CPU's threads)
+(-mx0 means zero compression, otherwise known as "Store"; -mx9 means maximum compression or the highest available - slower but highly effective)
 
 ```
 options0="-mx0 -mmt20"
